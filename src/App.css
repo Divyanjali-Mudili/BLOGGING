@@ -1,3 +1,10 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+
 main{
   padding:10px;
   max-width:600px;
@@ -56,3 +63,41 @@ div.entry p.sumary{
   margin:10px 0;
   line-height: 1.5rem;
 }
+ form.Register , form.Login{
+  display:flex;
+  flex-direction: column;
+ }
+ form.Login h2{
+  text-align: center;
+  padding:20px;
+ }
+ form.Register h1{
+  text-align: center;
+  padding:20px;
+ }
+ form.Login input{
+  margin-bottom: 5px;
+  max-width:100%;
+  padding:5px;
+  border:2px solid black;
+  border-radius:3px;
+ }
+ form.Register input{
+    margin-bottom: 5px;
+    max-width:100%;
+    padding:5px;
+    border:2px solid black;
+    border-radius:3px;
+   }
+  
+ 
+ button{
+  width:100%;
+  margin:15px auto;
+  border-radius:3px;
+  cursor: pointer;
+  background-color: #333;
+  color:aliceblue;
+  padding:7px 0;
+ }
+
