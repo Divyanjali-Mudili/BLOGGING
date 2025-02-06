@@ -20,7 +20,7 @@ To work on the project
 4. Make changes according to issue which you raised .
 5. To RUN this project -> type npm start in your vscode terminal .
 6. Then git add.
-7. git commit
+7. git commit -m"Your_message"
 8. git push your branch by creating a pull request to this project .
 9. Add screenshot of the work you have done and always try to tag me when submitting pull request.
 
