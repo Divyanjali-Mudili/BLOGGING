@@ -7,6 +7,9 @@ To work on this project first check out the work done by clicking on vercel link
 Raise the issue . 
 Then if your issue is allotted to you start working on the project .
 To work on the project 
+#Installations 
+-> npm install
+
 1. Fork the project
 2. clone the project in your work environment.
    a. To clone
@@ -15,7 +18,7 @@ To work on the project
    d. type the link from addressbar of your forked project in your cmd or git bash .
 3. Create your branch and ensure that your branch is upto date 
 4. Make changes according to issue which you raised .
-5. To run this project -> type npm start in your vscode terminal .
+5. To RUN this project -> type npm start in your vscode terminal .
 6. Then git add.
 7. git commit
 8. git push your branch by creating a pull request to this project .
