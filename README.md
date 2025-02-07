@@ -1,6 +1,6 @@
 THIS PROJECT IS SELECTED IN JWOC 
 
-
+#Start raising issues from 10 then only jwoc tag will be provided on the issue and pull request
 
 This project is based upon full stack [Mern]
 
