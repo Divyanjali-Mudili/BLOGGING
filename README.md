@@ -1,12 +1,14 @@
 THIS PROJECT IS SELECTED IN JWOC 
 
+#Start raising issues from 10th February then only jwoc tag will be provided on the issue and pull request
 
 This project is based upon full stack [Mern]
 
 To work on this project first check out the work done by clicking on vercel link .
 Raise the issue . 
 Then if your issue is allotted to you start working on the project .
-To work on the project 
+To work on this project 
+
 #Installations 
 -> npm install
 
