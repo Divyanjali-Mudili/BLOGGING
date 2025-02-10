@@ -39,7 +39,8 @@ img {
   max-width: 100%;
 }
 div.entry div.image {
-  width: 300%;
+  width: 135%;
+  height: 100%;
 }
 div.entry div.text h2 {
   margin: 0;
@@ -105,6 +106,32 @@ footer {
   text-align: center;
   color: #333;
 }
+
+.notfound{
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 300px; /* Limit the width on larger screens */
+  padding: 10px 15px;
+  border: 2px solid #ddd; /* Light gray border */
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
+}
+
+.search-input::placeholder {
+  color: #aaa; /* Placeholder text color */
+  font-style: italic; /* Optional: Make placeholder text italic */
+}
+
 
 /* 📩 Newsletter Subscription */
 .newsLetter {

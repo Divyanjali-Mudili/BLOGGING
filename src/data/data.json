@@ -1,0 +1,35 @@
+[
+    {
+      "id": 1,
+      "title": "Nature the home to lives!!",
+      "author": "Sweta Pandey",
+      "date": "2024-12-07 20:03",
+      "image": "../images/bsr-focus-nature-hero.jpg",
+      "summary": "The nature containing millions of insects, animals, and billions of humans..."
+    },
+    {
+      "id": 2,
+      "title": "Exploring the greatest truths behind tech.",
+      "author": "Sweta Pandey",
+      "date": "2024-12-07 20:03",
+      "image": "../images/explore.jpg",
+      "summary": "Technology is reshaping our world in ways we never imagined..."
+    },
+    {
+      "id": 3,
+      "title": "Look the trees around, so charming...",
+      "author": "Sweta Pandey",
+      "date": "2024-12-07 20:03",
+      "image": "../images/large_oak_tree.webp",
+      "summary": "Trees provide oxygen and beauty, shaping our planet's future."
+    },
+    {
+      "id": 4,
+      "title": "The big the Tech...",
+      "author": "Sweta Pandey",
+      "date": "2024-12-07 20:03",
+      "image": "images/tech1.jpg",
+      "summary": "Tech is evolving at an exponential pace, leading to amazing innovations."
+    }
+  ]
+  
