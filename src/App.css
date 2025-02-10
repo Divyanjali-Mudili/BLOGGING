@@ -56,6 +56,11 @@ div.entry p.info {
 }
 div.entry p.info span#author {
   color: #333;
+  transition: 0.3s;
+}
+.dark div.entry p.info span#author {
+  color: #cac0c0;
+  transition: 0.3s;
 }
 div.entry p.sumary {
   margin: 10px 0;
@@ -113,18 +118,27 @@ footer {
 
 .search-input {
   width: 100%;
-  max-width: 300px; /* Limit the width on larger screens */
+  max-width: 250px;
   padding: 10px 15px;
-  border: 2px solid #ddd; /* Light gray border */
+  border: 2px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
   outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: white;
+  color: black;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+.dark .search-input {
+  background-color: #222;
+  color: white;
+  border: 2px solid #444;
 }
 
 .search-input:focus {
-  border-color: #007bff; /* Blue border on focus */
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Subtle blue glow */
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
 }
 
 .search-input::placeholder {
@@ -132,6 +146,17 @@ footer {
   font-style: italic; /* Optional: Make placeholder text italic */
 }
 
+.theme-toggler{
+  width: 50px;
+  border-radius: 25px;
+}
+
+.header-comp{
+  margin-top: 5px;
+  margin-bottom: 40px;
+  display: flex;
+  gap: 15px;
+}
 
 /* 📩 Newsletter Subscription */
 .newsLetter {
