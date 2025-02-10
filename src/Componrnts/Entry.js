@@ -1,9 +1,19 @@
+import { useSearch } from "../context/SearchContext";
+import posts from "../data/data.json";
+
 export default function Entry() {
+  const { searchQuery } = useSearch(); // Access the search query
+
+  // Filter posts based on the search query
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
-      <div class="write-blog">
+      <div className="write-blog">
         <button
-          class="createBlogButton"
+          className="createBlogButton"
           onClick={() => {
             window.location.href = "/create";
           }}
@@ -12,75 +22,26 @@ export default function Entry() {
         </button>
       </div>
 
-      <div class="entry">
-        <div class="image">
-          <img src="../images/bsr-focus-nature-hero.jpg"></img>
-        </div>
-        <div class="text">
-          <h2>Nature the home to lives!!</h2>
-          <p class="info">
-            <span id="author">Sweta Pandey</span>
-            <time class="when">2024-12-07 20:03</time>
-          </p>
-          <p class="summary">
-            The nature containing millions of insects , animals . billions of
-            human beings especially on earth taking care of existence of each
-            species by completing the food chain .
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="image">
-          <img src="../images/explore.jpg"></img>
-        </div>
-        <div class="text">
-          <h2>Exploring the greatest truths behind tech.</h2>
-          <p class="info">
-            <span id="author">Sweta Pandey</span>
-            <time class="when">2024-12-07 20:03</time>
-          </p>
-          <p>
-            The nature containing millions of insects , animals . billions of
-            human beings especially on earth taking care of existence of each
-            species by completing the food chain .
-          </p>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="image">
-          <img src="../images/large_oak_tree.webp"></img>
-        </div>
-        <div class="text">
-          <h2>Look the trees around , so charming ..</h2>
-          <p class="info">
-            <span id="author">Sweta Pandey</span>
-            <time class="when">2024-12-07 20:03</time>
-          </p>
-          <p>
-            The nature containing millions of insects , animals . billions of
-            human beings especially on earth taking care of existence of each
-            species by completing the food chain .
-          </p>
-        </div>
-      </div>
-      <div class="entry">
-        <div class="image">
-          <img src="images/tech1.jpg"></img>
-        </div>
-        <div class="text">
-          <h2>The big the Tech...</h2>
-          <p class="info">
-            <span id="author">Sweta Pandey</span>
-            <time>2024-12-07 20:03</time>
-          </p>
-          <p class="summary">
-            The nature containing millions of insects , animals . billions of
-            human beings especially on earth taking care of existence of each
-            species by completing the food chain .
-          </p>
-        </div>
-      </div>
+      {/* Render dynamic posts */}
+      {filteredPosts.length > 0 ? (
+        filteredPosts.map((post) => (
+          <div className="entry" key={post.id}>
+            <div className="image">
+              <img src={post.image} alt={post.title} />
+            </div>
+            <div className="text">
+              <h2>{post.title}</h2>
+              <p className="info">
+                <span id="author">{post.author}</span>
+                <time className="when">{post.date}</time>
+              </p>
+              <p className="summary">{post.summary}</p>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p className="notfound" >No posts found.</p>
+      )}
     </>
   );
 }
