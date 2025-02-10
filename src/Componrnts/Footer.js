@@ -39,46 +39,47 @@ const Footer = () => {
       </div>
       <div className="links">
         {/* 🔗 Quick Links */}
-        <div className="quick-links">
-          <h3 className="text-lg font-semibold">Quick Links</h3>
-          <ul className="mt-3 space-y-2">
-            <li>
-              <a href="/" className="hover:text-blue-400">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="/about" className="hover:text-blue-400">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="/blog" className="hover:text-blue-400">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="/contact" className="hover:text-blue-400">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
+        <div className="quick-contact">
+          <div className="quick-links">
+            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <ul className="mt-3 space-y-2">
+              <li>
+                <a href="/" className="hover:text-blue-400">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="hover:text-blue-400">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/blog" className="hover:text-blue-400">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:text-blue-400">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        {/* 📞 Contact Information */}
-        <div style={{ textAlign: "start" }}>
-          <h3 className="text-lg font-semibold">Contact Us</h3>
-          <p className="mt-3">
-            <i class="fa-solid fa-location-dot"></i> 123 Street, City, Country
-          </p>
-          <p>
-            <i class="fa-solid fa-link"></i>yourwebsite.com
-          </p>
-          <p>
-            <i class="fa-solid fa-phone"></i> +123 456 7890
-          </p>
+          {/* 📞 Contact Information */}
+          <div style={{ textAlign: "start" }}>
+            <h3 className="text-lg font-semibold">Contact Us</h3>
+            <p className="mt-3">
+              <i class="fa-solid fa-location-dot"></i> 123 Street, City, Country
+            </p>
+            <p>
+              <i class="fa-solid fa-link"></i>yourwebsite.com
+            </p>
+            <p>
+              <i class="fa-solid fa-phone"></i> +123 456 7890
+            </p>
+          </div>
         </div>
-
         {/* 📢 Social Sharing Buttons */}
         <div className="social-sharing-buttons">
           <h3 className="text-lg font-semibold">Share Our Blog</h3>
