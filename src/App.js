@@ -11,6 +11,7 @@ import Login from "./Componrnts/Login.js";
 import Register from "./Componrnts/Register.js";
 import BlogPostCreate from "./Pages/BlogPostCreate";
 import Contact from "./Componrnts/Contact.js";
+import Feedback from "./Componrnts/Feedback.js"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route index element={<Entry />} />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/Register"} element={<Register />} />
+        <Route path={"/feedback"} element={<Feedback />} />
       </Route>
     </Routes>
   );
