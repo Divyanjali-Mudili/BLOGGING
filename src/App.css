@@ -112,7 +112,7 @@ footer {
   color: #333;
 }
 
-.notfound{
+.notfound {
   margin-bottom: 10px;
 }
 
@@ -146,12 +146,12 @@ footer {
   font-style: italic; /* Optional: Make placeholder text italic */
 }
 
-.theme-toggler{
+.theme-toggler {
   width: 50px;
   border-radius: 25px;
 }
 
-.header-comp{
+.header-comp {
   margin-top: 5px;
   margin-bottom: 40px;
   display: flex;
@@ -263,6 +263,68 @@ footer {
   font-size: 0.9rem;
   color: #666;
 }
+
+/* Contact */
+
+.contact-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #222;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  font-size: 16px;
+}
+
+.contact-textarea {
+  resize: none;
+}
+
+.contact-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-button:hover {
+  background-color: #0056b3;
+}
+
+.contact-button:disabled {
+  background-color: #444;
+  cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
   .newsLetter form {
     flex-direction: column;
