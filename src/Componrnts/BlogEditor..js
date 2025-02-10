@@ -7,40 +7,44 @@ import OpenAI from "openai";
 const BlogEditor = ({ value, onChange }) => {
   const editorRef = useRef(null);
   const [quill, setQuill] = useState(null);
+  const quillInstanceRef = useRef(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (editorRef.current && !quill) {
-      const quillInstance = new Quill(editorRef.current, {
-        theme: "snow",
-        modules: {
-          toolbar: [
-            [{ header: [1, 2, false] }],
-            ["bold", "italic", "underline"],
-            [{ list: "ordered" }, { list: "bullet" }],
-            ["link", "blockquote", "code-block"],
-            ["clean"],
-          ],
-        },
-      });
+    if (!editorRef.current || quillInstanceRef.current) return; // Prevent multiple instances
 
-      setQuill(quillInstance);
+    const quill = new Quill(editorRef.current, {
+      theme: "snow",
+      modules: {
+        toolbar: [
+          [{ header: [1, 2, false] }],
+          ["bold", "italic", "underline"],
+          [{ list: "ordered" }, { list: "bullet" }],
+          ["link", "blockquote", "code-block"],
+          ["clean"],
+        ],
+      },
+    });
 
-      quillInstance.on("text-change", () => {
-        onChange(quillInstance.root.innerHTML);
-      });
-    }
-  }, [quill, onChange]);
+    quillInstanceRef.current = quill; // Store instance in ref
 
+    quill.on("text-change", () => {
+      onChange(quill.root.innerHTML);
+    });
+  }, [onChange]);
   // Handle AI Suggestion
   const openai = new OpenAI({
-    apiKey: "API KEY",
-    // dangerouslyAllowBrowser: true,
+    apiKey: "OPEN_AI_API_KEY", //use your openai api key
+    dangerouslyAllowBrowser: true,
   });
 
+  //! Note: Create an API Route in the backend to generate suggestion and then update the backend
+
   const handleAISuggestion = async () => {
+    if (!quillInstanceRef.current) return;
+
     setLoading(true);
-    const text = quill.root.innerText;
+    const text = quillInstanceRef.current.root.innerText;
 
     try {
       const completion = await openai.chat.completions.create({
@@ -56,7 +60,7 @@ const BlogEditor = ({ value, onChange }) => {
       });
 
       const suggestion = completion.choices[0].message.content;
-      quill.root.innerHTML += `<p><strong>AI Suggestion:</strong> ${suggestion}</p>`;
+      quillInstanceRef.current.root.innerHTML += `<p><strong>AI Suggestion:</strong> ${suggestion}</p>`;
     } catch (error) {
       console.error("Error fetching AI suggestion:", error);
     }
