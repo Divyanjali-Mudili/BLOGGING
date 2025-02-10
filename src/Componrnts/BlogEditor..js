@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
-import axios from "axios";
+
 import OpenAI from "openai";
 
 const BlogEditor = ({ value, onChange }) => {
