@@ -1,103 +1,245 @@
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-
-main{
-  padding:10px;
-  max-width:600px;
-    margin:auto;                        /* for cemter */
-
+main {
+  padding: 10px;
+  max-width: 600px;
+  margin: auto; /* for cemter */
 }
-header{
+header {
   margin-top: 20px;
-  display:flex;
+  display: flex;
   align-items: center;
- justify-content: space-between;
- margin-bottom:100px;
+  justify-content: space-between;
+  margin-bottom: 100px;
 }
-header a{
+header a {
   text-decoration: none;
-  color:inherit;               /*inherit takes default i.e, black color.*/
+  color: inherit; /*inherit takes default i.e, black color.*/
 }
-header a.logo{
+header a.logo {
   font-weight: 800;
-  font-size:1.5rem;
+  font-size: 1.5rem;
 }
-header nav{
-  display:flex;
-  gap:5px;
+header nav {
+  display: flex;
+  gap: 5px;
   font-weight: 500;
 }
 
-div.entry{
-  display:flex;
-  gap:20px;
+div.entry {
+  display: flex;
+  gap: 20px;
   margin-bottom: 40px;
-  
 }
-img{
-  max-width:100%;
+img {
+  max-width: 100%;
 }
-div.entry div.image{
- width:300%;
+div.entry div.image {
+  width: 300%;
 }
-div.entry div.text h2{
-  margin:0;
+div.entry div.text h2 {
+  margin: 0;
   font-size: 1.6rem;
 }
-div.entry p.info{
-  margin:6px 0;
-  color:#888;
-  font-size:0.7rem;
+div.entry p.info {
+  margin: 6px 0;
+  color: #888;
+  font-size: 0.7rem;
   font-weight: bold;
-  display:flex;
-  gap:10px;
+  display: flex;
+  gap: 10px;
 }
-div.entry p.info span#author{
-   color:#333;
+div.entry p.info span#author {
+  color: #333;
 }
-div.entry p.sumary{
-  margin:10px 0;
+div.entry p.sumary {
+  margin: 10px 0;
   line-height: 1.5rem;
 }
- form.Register , form.Login{
-  display:flex;
+form.Register,
+form.Login {
+  display: flex;
   flex-direction: column;
- }
- form.Login h2{
+}
+form.Login h2 {
   text-align: center;
-  padding:20px;
- }
- form.Register h1{
+  padding: 20px;
+}
+form.Register h1 {
   text-align: center;
-  padding:20px;
- }
- form.Login input{
+  padding: 20px;
+}
+form.Login input {
   margin-bottom: 5px;
-  max-width:100%;
-  padding:5px;
-  border:2px solid black;
-  border-radius:3px;
- }
- form.Register input{
-    margin-bottom: 5px;
-    max-width:100%;
-    padding:5px;
-    border:2px solid black;
-    border-radius:3px;
-   }
-  
- 
- button{
-  width:100%;
-  margin:15px auto;
-  border-radius:3px;
+  max-width: 100%;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 3px;
+}
+form.Register input {
+  margin-bottom: 5px;
+  max-width: 100%;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
+button {
+  width: 100%;
+  margin: 15px auto;
+  border-radius: 3px;
   cursor: pointer;
   background-color: #333;
-  color:aliceblue;
-  padding:7px 0;
- }
+  color: aliceblue;
+  padding: 7px 0;
+}
+footer {
+  min-width: 100%;
+  padding: 20px;
+  background-color: #b7b7b7;
+  text-align: center;
+  color: #333;
+}
 
+/* 📩 Newsletter Subscription */
+.newsLetter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.newsLetter form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+.newsLetter input {
+  padding: 11px;
+  border-radius: 10px;
+  width: 100%;
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.newsletter-submit {
+  background-color: #333;
+  color: aliceblue;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: fit-content;
+  border: none;
+}
+
+/*  Quick Links */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.links h3 {
+  margin-bottom: 1rem;
+}
+
+.links .quick-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.links .quick-links li {
+  margin-bottom: 8px;
+}
+
+/* 📢 Social Sharing Buttons */
+.social-sharing-buttons-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-sharing-buttons-links a {
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.social-sharing-buttons-links a:hover {
+  color: #007bff;
+}
+
+/* 🔒 Privacy & Terms */
+.privacy {
+  margin-top: 20px;
+}
+
+.privacy a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 5px;
+}
+
+.privacy a:hover {
+  text-decoration: underline;
+}
+
+/* Ⓒ Copyright */
+.copyright {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* 🌍 Mobile Responsiveness */
+@media (max-width: 768px) {
+  .newsLetter form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .newsLetter input {
+    width: 100%;
+  }
+
+  .newsletter-submit {
+    width: 100%;
+    text-align: center;
+  }
+
+  .links {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .social-sharing-buttons-links {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-sharing-buttons-links a {
+    font-size: 1.2rem;
+  }
+
+  .newsletter-submit {
+    padding: 10px;
+  }
+}
