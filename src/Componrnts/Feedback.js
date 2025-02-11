@@ -1,92 +1,128 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
+import {
+  Card,
+  CardContent,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Button,
+  Container,
+  Stack,
+  Typography,
+  Box
+} from '@mui/material';
+//using memo for future scenario if a parent component is added 
+const FeedbackForm = memo(() => {
+  const [formData, setFormData] = useState({
+    rating: '',
+    message: '',
+    visibility: 'private',
+    username: '',
+    email: ''
+  });
 
-const FeedbackForm = () => {
-  const [emoji, setEmoji] = useState('');
-  const [message, setMessage] = useState('');
-  const [visibility, setVisibility] = useState('private');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  const ratings = [
+    { value: 1, label: 'Poor' },
+    { value: 2, label: 'Fair' },
+    { value: 3, label: 'Good' },
+    { value: 4, label: 'Very Good' },
+    { value: 5, label: 'Excellent' }
+  ];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log({
-      emoji,
-      message,
-      visibility,
-      username,
-      email,
-    });
-    // Reset form
-    setEmoji('');
-    setMessage('');
-    setVisibility('private');
-    setUsername('');
-    setEmail('');
+  const handleChange = (field) => (event) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: event.target.value
+    }));
   };
 
+
   return (
-    <div className="container mt-5">
-      <h2 className="text-center">Feedback Form</h2>
-      <form onSubmit={handleSubmit} className="mt-4">
-        <div className="mb-3">
-          <label className="form-label">Select an Emoji:</label>
-          <select className="form-select" value={emoji} onChange={(e) => setEmoji(e.target.value)}>
-            <option value="">--Choose an Emoji--</option>
-            <option value="😊">😊 Happy</option>
-            <option value="😐">😐 Neutral</option>
-            <option value="😞">😞 Sad</option>
-            <option value="😡">😡 Angry</option>
-          </select>
-        </div>
+    <Container maxWidth="sm" sx={{ mt: 4 }}>
+      <Card>
+        <CardContent>
+          <Typography variant="h5" component="h2" sx={{ mb: 3 }} align="center">
+            Share Your Feedback
+          </Typography>
 
-        <div className="mb-3">
-          <label className="form-label">Message:</label>
-          <textarea
-            className="form-control"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
-            placeholder="Your feedback..."
-          />
-        </div>
+          <form>
+            <Stack spacing={3}>
+              <FormControl fullWidth>
+                <InputLabel id="rating-label">Rating</InputLabel>
+                <Select
+                  labelId="rating-label"
+                  value={formData.rating}
+                  label="Rating"
+                  onChange={handleChange('rating')}
+                  required
+                >
+                  <MenuItem value="">Select a rating</MenuItem>
+                  {ratings.map((rating) => (
+                    <MenuItem key={rating.value} value={rating.value}>
+                      {rating.value} - {rating.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
 
-        <div className="mb-3">
-          <label className="form-label">Visibility:</label>
-          <select className="form-select" value={visibility} onChange={(e) => setVisibility(e.target.value)}>
-            <option value="private">Private</option>
-            <option value="public">Public</option>
-          </select>
-        </div>
+              <TextField
+                label="Message"
+                multiline
+                rows={4}
+                value={formData.message}
+                onChange={handleChange('message')}
+                required
+                fullWidth
+              />
 
-        <div className="mb-3">
-          <label className="form-label">Username:</label>
-          <input
-            type="text"
-            className="form-control"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            placeholder="Your username"
-          />
-        </div>
+              <FormControl fullWidth>
+                <InputLabel id="visibility-label">Visibility</InputLabel>
+                <Select
+                  labelId="visibility-label"
+                  value={formData.visibility}
+                  label="Visibility"
+                  onChange={handleChange('visibility')}
+                >
+                  <MenuItem value="private">Private</MenuItem>
+                  <MenuItem value="public">Public</MenuItem>
+                </Select>
+              </FormControl>
 
-        <div className="mb-3">
-          <label className="form-label">Email:</label>
-          <input
-            type="email"
-            className="form-control"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder="Your email"
-          />
-        </div>
+              <TextField
+                label="Username"
+                value={formData.username}
+                onChange={handleChange('username')}
+                required
+                fullWidth
+              />
 
-        <button type="submit" className="btn btn-primary">Send Feedback</button>
-      </form>
-    </div>
+              <TextField
+                label="Email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange('email')}
+                required
+                fullWidth
+              />
+
+              <Button 
+                type="submit"
+                variant="contained" 
+                color="primary"
+                fullWidth
+                size="large"
+              >
+                Submit Feedback
+              </Button>
+            </Stack>
+          </form>
+        </CardContent>
+      </Card>
+    </Container>
   );
-};
+});
 
+FeedbackForm.displayName = 'FeedbackForm';
 export default FeedbackForm;
