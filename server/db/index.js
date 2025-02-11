@@ -93,22 +93,66 @@ const blogSchema = new mongoose.Schema({
 }
     
 )
-CommentSchema = new mongoose.Schema({
+const CommentSchema = new mongoose.Schema({
     postId: { type: mongoose.Schema.Types.ObjectId, ref: "Blog" },
-    user: String,
-    text: String,
-    createdAt: { type: Date, default: Date.now }
+    userId: {
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"User"
+    },
+    text: {
+      type:String,
+      required:true
+    },
+    parentComment:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:"Comments",
+      default:null
+    },
+  },{
+    timestamps:true
   });
+  
+
+  const notificationSchema = new mongoose.Schema(
+    {
+      recipient:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true
+      },
+      sender: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required:true
+      },
+      message:{
+        type: String,
+        required:true
+      },
+      isRead:{
+        type:Boolean,
+        default:false
+      }
+    },
+  
+    {
+      timestamps: true,
+    }
+  );
+  
+
   
 
 const User = mongoose.model('User', userSchema);
 const Admin = mongoose.model('Admin', adminSchema);
 const Blog = mongoose.model('Blog', blogSchema);
 const Comments = mongoose.model('Comments',CommentSchema)
+const Notifications=mongoose.model("Notifications", notificationSchema);
   
   module.exports = {
     User,
     Admin,
     Blog,
     Comments,
+    Notifications
   }

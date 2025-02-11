@@ -39,10 +39,6 @@ router.delete('/delete/:blogId',authenticateJwt,async(res,req)=>{
    const blog = await Blog.findByIdAndDelete(req.params.blogId);
     return res.json({blog:'Blog deleted successfully'});
 });
-router.put('/Update/:blogId',authenticateJwt,async(res,req)=>{
-   const blog = await Blog.findByIdAndUpdate(req.params.blogId,req.body,{new: true});
-  return res.json({blog:'Blog deleted successfully'});
-});
 router.get('/show',authenticateJwt,async(res,req)=>{
     const blog= await Blog.find({});
     return res.json({ blog })
