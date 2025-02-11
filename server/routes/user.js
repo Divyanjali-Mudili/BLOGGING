@@ -183,7 +183,7 @@ router.get('/comment/:postId', authenticateJwt, async (req, res) => {
         const userId=req.user.userId
         const {postId}= req.params
 
-       const comments=await Comments.find({postId:postId,userId:userId })
+       const comments=await Comments.find({postId:postId,userId:userId, parentComment:null })
             response.success=true;
             response.data=comments
             response.message="Comments Fetched Successfully";
