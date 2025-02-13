@@ -9,7 +9,7 @@ import Entry from "./Componrnts/Entry.js";
 import Layout from "./Componrnts/Layout.js";
 import Login from "./Componrnts/Login.js";
 import Register from "./Componrnts/Register.js";
-import BlogPostCreate from "./Pages/BlogPostCreate";
+import BlogPostCreate from "./Pages/BlogPostCreate.js";
 import Contact from "./Componrnts/Contact.js";
 import Feedback from "./Componrnts/Feedback.js"
 
