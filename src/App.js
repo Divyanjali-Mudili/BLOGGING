@@ -12,11 +12,13 @@ import Register from "./Componrnts/Register.js";
 import BlogPostCreate from "./Pages/BlogPostCreate.js";
 import Contact from "./Componrnts/Contact.js";
 import Feedback from "./Componrnts/Feedback.js"
+import About from "./Pages/About.js";
 
 function App() {
   return (
     <Routes>
       <Route path={"/"} element={<Layout />}>
+        <Route path={"about"} element={<About />} />
         <Route path={"create"} element={<BlogPostCreate />} />
         <Route path={"contact"} element={<Contact />} />
         <Route index element={<Entry />} />
