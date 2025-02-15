@@ -81,7 +81,7 @@ This project provides an easy-to-use blogging platform where users can:
 
 📬 Contact
 ----------
-* 📧 **Email:** yourname@example.com🔗 
+* 📧 **Email:** sweta803pandey@gmail.com🔗 
 * **Linkedin:** [ABC] (Linkedin_profile_link)
 * **GitHub:** [Codersweta7](https://github.com/yourusername)🌐 
 * **Website:** [Blogging](https://blogging-silk.vercel.app/)
