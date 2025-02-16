@@ -19,10 +19,17 @@ const Footer = () => {
   const currentURL = encodeURIComponent(window.location.href);
 
   return (
-    <footer className="bg-gray-900 text-white py-10">
+    <footer className="bg-gray-900 text-white py-10 Footer">
+      <h1>MY BLOG..</h1>
+      <h4>Welcome to My Blog!</h4>
+      <h4>A space where ideas, insights,</h4>
+      <h4> and inspiration come together.</h4>
+      <h4>Dive into engaging content,</h4>
+      <h4>explore unique perspectives,</h4>
+      <h4> and join the journey of learning and discovery.</h4>
       {/* 📩 Newsletter Subscription */}
       <div className="newsLetter">
-        <h3 className="text-lg font-semibold">Subscribe to our Newsletter</h3>
+        <h3 className="text-lg font-semibold heading">Subscribe to our Newsletter</h3>
         <form onSubmit={handleSubscribe} className="mt-3 flex">
           <input
             type="email"
@@ -67,7 +74,7 @@ const Footer = () => {
           </div>
 
           {/* 📞 Contact Information */}
-          <div style={{ textAlign: "start" }}>
+          <div className="contact" style={{ textAlign: "left"}}>
             <h3 className="text-lg font-semibold">Contact Us</h3>
             <p className="mt-3">
               <i class="fa-solid fa-location-dot"></i> 123 Street, City, Country

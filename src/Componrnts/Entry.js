@@ -1,5 +1,6 @@
 import { useSearch } from "../context/SearchContext";
 import posts from "../data/data.json";
+import React, { useEffect } from 'react';
 
 export default function Entry() {
   const { searchQuery } = useSearch(); // Access the search query
@@ -26,18 +27,19 @@ export default function Entry() {
       {filteredPosts.length > 0 ? (
         filteredPosts.map((post) => (
           <div className="entry" key={post.id}>
-            <div className="image">
-              <img src={post.image} alt={post.title} />
-            </div>
-            <div className="text">
-              <h2>{post.title}</h2>
-              <p className="info">
+              <div className="image">
+                <img src={post.image} alt={post.title} />
+                <div className="text">
+                  <h2>{post.title}</h2>
+                  <p className="info">
                 <span id="author">{post.author}</span>
                 <time className="when">{post.date}</time>
               </p>
               <p className="summary">{post.summary}</p>
+              <a href="#" className="read-more">Read More</a>
+              </div>
             </div>
-          </div>
+          </div> 
         ))
       ) : (
         <p className="notfound" >No posts found.</p>
