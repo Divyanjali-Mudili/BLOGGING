@@ -4,6 +4,8 @@ import { useSearch } from "../context/SearchContext";
 import { useTheme } from "../context/ThemeContext";
 import { FaBars, FaTimes} from "react-icons/fa";
 import { useRef, useEffect } from "react";
+import sunIcon from '../utils/sun.png'
+import moonIcon from '../utils/moon.png'
 export default function Header(){
   const { searchQuery, setSearchQuery } = useSearch();
   const { darkMode, toggleDarkMode } = useTheme();
@@ -41,9 +43,9 @@ export default function Header(){
     </div>  
     <button
           onClick={toggleDarkMode}
-          className="theme-toggler"
+          className="theme-toggler "
         >
-          {darkMode ? "🌙" : "☀️"}
+          {darkMode ? <img src={moonIcon} style={{width:35,height:35}}/> : <img src={sunIcon} style={{width:35,height:35}}/>}
         </button>
 
       <nav className={`nav-link ${isOpen ? "open" : ""}`}>
