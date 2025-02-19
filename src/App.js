@@ -14,9 +14,10 @@ import Contact from "./Componrnts/Contact.js";
 import Feedback from "./Componrnts/Feedback.js"
 import About from "./Pages/About.js";
 import FAQ from "./Componrnts/Faq.js";
+import ScrollToTopButton from "./Componrnts/ScrollToTop.jsx";
 
 function App() {
-  return (
+  return (<>
     <Routes>
       <Route path={"/"} element={<Layout />}>
         <Route path={"about"} element={<About />} />
@@ -29,6 +30,8 @@ function App() {
         <Route path={"/feedback"} element={<Feedback />} />
       </Route>
     </Routes>
+      <ScrollToTopButton/>
+    </>
   );
 }
 
