@@ -5,10 +5,11 @@
 }
 
 main {
-  padding: 10px;
   max-width: 600px;
-  margin: auto; /* for cemter */
+  margin: auto;
+  /* for cemter */
 }
+
 header {
   margin-top: 20px;
   display: flex;
@@ -16,14 +17,18 @@ header {
   justify-content: space-between;
   margin-bottom: 100px;
 }
+
 header a {
   text-decoration: none;
-  color: inherit; /*inherit takes default i.e, black color.*/
+  color: inherit;
+  /*inherit takes default i.e, black color.*/
 }
+
 header a.logo {
   font-weight: 800;
   font-size: 1.5rem;
 }
+
 header nav {
   display: flex;
   gap: 5px;
@@ -35,17 +40,21 @@ div.entry {
   gap: 20px;
   margin-bottom: 40px;
 }
+
 img {
   max-width: 100%;
 }
+
 div.entry div.image {
   width: 135%;
   height: 100%;
 }
+
 div.entry div.text h2 {
   margin: 0;
   font-size: 1.6rem;
 }
+
 div.entry p.info {
   margin: 6px 0;
   color: #888;
@@ -54,18 +63,22 @@ div.entry p.info {
   display: flex;
   gap: 10px;
 }
+
 div.entry p.info span#author {
   color: #333;
   transition: 0.3s;
 }
+
 .dark div.entry p.info span#author {
   color: #cac0c0;
   transition: 0.3s;
 }
+
 div.entry p.sumary {
   margin: 10px 0;
   line-height: 1.5rem;
 }
+
 form.register,
 form.Login {
   display: flex;
@@ -77,23 +90,28 @@ form.Login {
   background: linear-gradient(30deg, #55555578, #44444487);
   padding: 4rem;
 }
+
 form.Login h3,
 form.register h3 {
   text-align: center;
   font-weight: 700;
 }
-form.register h3 span{
+
+form.register h3 span {
   color: #777;
 }
+
 form.Login p,
 form.register p {
   text-align: center;
   color: #fcf9f9;
 }
+
 form.Login p a,
-form.register p a{
+form.register p a {
   color: #797878;
 }
+
 form.Login input,
 form.register input {
   margin-bottom: 0.8rem;
@@ -102,10 +120,12 @@ form.register input {
   border: 2px solid #333;
   border-radius: 0.5rem;
 }
+
 form.Login input::placeholder,
 form.register input::placeholder {
   color: #444;
 }
+
 button {
   width: 100%;
   margin: 15px auto;
@@ -126,7 +146,7 @@ form.register button {
 
 form.Login button:hover,
 form.register button:hover {
-  background: linear-gradient(90deg,#666, #444);
+  background: linear-gradient(90deg, #666, #444);
   color: #ffffff;
 }
 
@@ -168,8 +188,10 @@ footer {
 }
 
 .search-input::placeholder {
-  color: #aaa; /* Placeholder text color */
-  font-style: italic; /* Optional: Make placeholder text italic */
+  color: #aaa;
+  /* Placeholder text color */
+  font-style: italic;
+  /* Optional: Make placeholder text italic */
 }
 
 .theme-toggler {
@@ -236,11 +258,13 @@ footer {
 .links h3 {
   margin-bottom: 1rem;
 }
+
 .quick-contact {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
 }
+
 .links .quick-links ul {
   list-style: none;
   padding: 0;
@@ -382,6 +406,7 @@ footer {
     flex: 1;
     min-width: 150px;
   }
+
   .social-sharing-buttons {
     display: flex;
     flex-direction: column;
@@ -390,6 +415,7 @@ footer {
     gap: 0px;
     width: 100%;
   }
+
   .social-sharing-buttons-links {
     gap: 10px;
     margin: 0;
@@ -415,4 +441,14 @@ footer {
   .newsletter-submit {
     padding: 10px;
   }
+}
+
+.blog-light {
+  background-color: #c0baba;
+  box-shadow: #222;
+}
+
+.blog-dark {
+  background-color: #343a40;
+  box-shadow: #222;
 }
