@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import Quill from "quill";
-import "quill/dist/quill.snow.css";
+import React, { useEffect, useRef, useState } from 'react';
+import Quill from 'quill';
+import 'quill/dist/quill.snow.css';
 
-import OpenAI from "openai";
+import OpenAI from 'openai';
 
 const BlogEditor = ({ value, onChange }) => {
   const editorRef = useRef(null);
@@ -14,27 +14,27 @@ const BlogEditor = ({ value, onChange }) => {
     if (!editorRef.current || quillInstanceRef.current) return; // Prevent multiple instances
 
     const quill = new Quill(editorRef.current, {
-      theme: "snow",
+      theme: 'snow',
       modules: {
         toolbar: [
           [{ header: [1, 2, false] }],
-          ["bold", "italic", "underline"],
-          [{ list: "ordered" }, { list: "bullet" }],
-          ["link", "blockquote", "code-block"],
-          ["clean"],
+          ['bold', 'italic', 'underline'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          ['link', 'blockquote', 'code-block'],
+          ['clean'],
         ],
       },
     });
 
     quillInstanceRef.current = quill; // Store instance in ref
 
-    quill.on("text-change", () => {
+    quill.on('text-change', () => {
       onChange(quill.root.innerHTML);
     });
   }, [onChange]);
   // Handle AI Suggestion
   const openai = new OpenAI({
-    apiKey: "OPEN_AI_API_KEY", //use your openai api key
+    apiKey: 'OPEN_AI_API_KEY', //use your openai api key
     dangerouslyAllowBrowser: true,
   });
 
@@ -48,13 +48,13 @@ const BlogEditor = ({ value, onChange }) => {
 
     try {
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: 'gpt-4o-mini',
         messages: [
           {
-            role: "system",
-            content: "Enhance and improve the following blog content.",
+            role: 'system',
+            content: 'Enhance and improve the following blog content.',
           },
-          { role: "user", content: text },
+          { role: 'user', content: text },
         ],
         max_tokens: 200,
       });
@@ -62,7 +62,7 @@ const BlogEditor = ({ value, onChange }) => {
       const suggestion = completion.choices[0].message.content;
       quillInstanceRef.current.root.innerHTML += `<p><strong>AI Suggestion:</strong> ${suggestion}</p>`;
     } catch (error) {
-      console.error("Error fetching AI suggestion:", error);
+      console.error('Error fetching AI suggestion:', error);
     }
 
     setLoading(false);
@@ -70,19 +70,19 @@ const BlogEditor = ({ value, onChange }) => {
 
   return (
     <div>
-      <div ref={editorRef} style={{ height: "300px" }}></div>
+      <div ref={editorRef} style={{ height: '300px' }}></div>
       <button
         onClick={handleAISuggestion}
         disabled={loading}
         style={{
-          marginTop: "10px",
-          padding: "8px",
-          backgroundColor: "blue",
-          color: "white",
-          borderRadius: "5px",
+          marginTop: '10px',
+          padding: '8px',
+          backgroundColor: 'blue',
+          color: 'white',
+          borderRadius: '5px',
         }}
       >
-        {loading ? "Generating..." : "Get AI Suggestion"}
+        {loading ? 'Generating...' : 'Get AI Suggestion'}
       </button>
     </div>
   );
