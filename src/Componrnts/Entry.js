@@ -3,9 +3,11 @@ import posts from '../data/data.json';
 import { useState } from 'react';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+import ScrollAnimation from 'react-animate-on-scroll';
+import 'animate.css/animate.compat.css';
 
 export default function Entry() {
-  const { searchQuery } = useSearch(); // Access the search query
+  const { searchQuery } = useSearch();
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
 
@@ -14,55 +16,53 @@ export default function Entry() {
     post.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const buildBlogPosts = (posts) => {
-    return posts.map((post) => (
-      <div className='post-entry container p-10 md:w-[80%]' key={post.id}>
-        <div className='p-4 blog-light rounded-md'>
-          <h2 className='text-xl md:text-4xl font-bold pl-4'>{post.title}</h2>
-          <p className='info pt-1 ml-5  md:text-lg'>
-            Writer : <strong>{post.author}</strong> | Date :{' '}
-            <strong>{post.date}</strong>
-          </p>
-          <p className='summary ml-5 md:text-md'>{post.summary}</p>
-          <div className='flex justify-center '>
-            {post.image.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt='Gallery'
-                className='w-[375px] md:w-[60%] pd-5 rounded-xl p-2 object-cover cursor-pointer'
-                onClick={() => {
-                  setPhotoIndex(index);
-                  setIsOpen(true);
-                }}
-              />
-            ))}
-
-            {isOpen && (
-              <Lightbox
-                mainSrc={post.image[photoIndex]}
-                nextSrc={post.image[(photoIndex + 1) % post.image.length]}
-                prevSrc={
-                  post.image[
-                    (photoIndex + post.image.length - 1) % post.image.length
-                  ]
-                }
-                onCloseRequest={() => setIsOpen(false)}
-                onMovePrevRequest={() =>
-                  setPhotoIndex(
-                    (photoIndex + post.image.length - 1) % post.image.length
-                  )
-                }
-                onMoveNextRequest={() =>
-                  setPhotoIndex((photoIndex + 1) % post.image.length)
-                }
-              />
-            )}
-          </div>
+  // Function to render a single post
+  const renderPost = (post) => (
+    <div className='post-entry container p-10 md:w-[80%]' key={post.id}>
+      <div className='p-4 blog-light rounded-md'>
+        <h2 className='text-xl md:text-4xl font-bold pl-4'>{post.title}</h2>
+        <p className='info pt-1 ml-5 md:text-lg'>
+          Writer: <strong>{post.author}</strong> | Date:{' '}
+          <strong>{post.date}</strong>
+        </p>
+        <p className='summary ml-5 md:text-md'>{post.summary}</p>
+        <div className='flex justify-center'>
+          {post.image.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt='Gallery'
+              className='w-[375px] md:w-[60%] pd-5 rounded-xl p-2 object-cover cursor-pointer'
+              onClick={() => {
+                setPhotoIndex(index);
+                setIsOpen(true);
+              }}
+            />
+          ))}
+          {isOpen && (
+            <Lightbox
+              mainSrc={post.image[photoIndex]}
+              nextSrc={post.image[(photoIndex + 1) % post.image.length]}
+              prevSrc={
+                post.image[
+                  (photoIndex + post.image.length - 1) % post.image.length
+                ]
+              }
+              onCloseRequest={() => setIsOpen(false)}
+              onMovePrevRequest={() =>
+                setPhotoIndex(
+                  (photoIndex + post.image.length - 1) % post.image.length
+                )
+              }
+              onMoveNextRequest={() =>
+                setPhotoIndex((photoIndex + 1) % post.image.length)
+              }
+            />
+          )}
         </div>
       </div>
-    ));
-  };
+    </div>
+  );
 
   return (
     <div className='mt-20'>
@@ -80,7 +80,21 @@ export default function Entry() {
       {/* Render dynamic posts */}
       <div className='container'>
         {filteredPosts.length > 0 ? (
-          buildBlogPosts(filteredPosts)
+          <>
+            {/* Render all posts with scroll animations */}
+            {filteredPosts.map((post, index) => (
+              <ScrollAnimation
+                animateIn='fadeInUp'
+                animateOut={index === 0 ? '' : 'fadeOutDown'}
+                duration={0.5}
+                animateOnce={false}
+                animatePreScroll={false} // Ensure animations trigger only upon user scroll
+                key={post.id}
+              >
+                {renderPost(post)}
+              </ScrollAnimation>
+            ))}
+          </>
         ) : (
           <p className='notfound'>No posts found.</p>
         )}
