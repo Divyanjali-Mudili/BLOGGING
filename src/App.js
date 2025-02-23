@@ -11,6 +11,7 @@ import Feedback from './Componrnts/Feedback.js';
 import About from './Pages/About.js';
 import FAQ from './Componrnts/Faq.js';
 import ScrollToTopButton from "./Componrnts/ScrollToTop.jsx";
+import NotFound from "./NotFound.js";
 
 function App() {
   return (<>
@@ -24,6 +25,8 @@ function App() {
         <Route path={'/login'} element={<Login />} />
         <Route path={'/Register'} element={<Register />} />
         <Route path={'/feedback'} element={<Feedback />} />
+        {/* Catch-all route for 404 */}
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
       <ScrollToTopButton/>
