@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
-  faTwitter,
+  faXTwitter,
   faLinkedin,
   faWhatsapp,
 } from '@fortawesome/free-brands-svg-icons';
@@ -101,7 +101,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="transform hover:scale-110 transition-transform duration-200"
               >
-                <FontAwesomeIcon icon={faTwitter} className="text-2xl text-gray-400 hover:text-blue-400" />
+                <FontAwesomeIcon icon={faXTwitter} className="text-2xl text-gray-400 hover:text-blue-400" />
               </a>
               <a
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${currentURL}`}
