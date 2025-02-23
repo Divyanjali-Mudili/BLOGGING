@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
-
-import OpenAI from 'openai';
+import { Wand2 } from 'lucide-react';
+import Button from '@mui/material/Button';
+import { toast } from 'react-toastify';
 
 const BlogEditor = ({ value, onChange }) => {
   const editorRef = useRef(null);
-  const [quill, setQuill] = useState(null);
   const quillInstanceRef = useRef(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!editorRef.current || quillInstanceRef.current) return; // Prevent multiple instances
+    if (!editorRef.current || quillInstanceRef.current) return;
 
     const quill = new Quill(editorRef.current, {
       theme: 'snow',
@@ -24,66 +24,74 @@ const BlogEditor = ({ value, onChange }) => {
           ['clean'],
         ],
       },
+      placeholder: 'Start writing your blog post...',
     });
 
-    quillInstanceRef.current = quill; // Store instance in ref
+    quillInstanceRef.current = quill;
 
     quill.on('text-change', () => {
       onChange(quill.root.innerHTML);
     });
-  }, [onChange]);
-  // Handle AI Suggestion
-  const openai = new OpenAI({
-    apiKey: 'OPEN_AI_API_KEY', //use your openai api key
-    dangerouslyAllowBrowser: true,
-  });
 
-  //! Note: Create an API Route in the backend to generate suggestion and then update the backend
+    // Apply custom styles to Quill editor
+    const editorStyles = document.createElement('style');
+    editorStyles.textContent = `
+      .ql-toolbar.ql-snow {
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem 0.5rem 0 0;
+        background-color: #f8fafc;
+      }
+      .ql-container.ql-snow {
+        border: 1px solid #e2e8f0;
+        border-top: none;
+        border-radius: 0 0 0.5rem 0.5rem;
+        min-height: 300px;
+        font-family: 'Inter', sans-serif;
+      }
+      .ql-editor {
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+    `;
+    document.head.appendChild(editorStyles);
+  }, [onChange]);
 
   const handleAISuggestion = async () => {
     if (!quillInstanceRef.current) return;
 
     setLoading(true);
-    const text = quillInstanceRef.current.root.innerText;
-
     try {
-      const completion = await openai.chat.completions.create({
-        model: 'gpt-4o-mini',
-        messages: [
-          {
-            role: 'system',
-            content: 'Enhance and improve the following blog content.',
-          },
-          { role: 'user', content: text },
-        ],
-        max_tokens: 200,
-      });
-
-      const suggestion = completion.choices[0].message.content;
+      // Simulate AI suggestion for now
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      const suggestion = "Here's a suggested improvement for your content...";
       quillInstanceRef.current.root.innerHTML += `<p><strong>AI Suggestion:</strong> ${suggestion}</p>`;
+      toast({
+        title: "AI Suggestion Generated",
+        description: "The suggestion has been added to your editor.",
+      });
     } catch (error) {
-      console.error('Error fetching AI suggestion:', error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to generate AI suggestion. Please try again.",
+      });
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
-    <div>
-      <div ref={editorRef} style={{ height: '300px' }}></div>
-      <button
+    <div className="space-y-4">
+      <div ref={editorRef} className="transition-all duration-200 ease-in-out"></div>
+      <Button
         onClick={handleAISuggestion}
         disabled={loading}
-        style={{
-          marginTop: '10px',
-          padding: '8px',
-          backgroundColor: 'blue',
-          color: 'white',
-          borderRadius: '5px',
-        }}
+        variant="outline"
+        className="w-full transition-all duration-200 hover:bg-slate-100"
       >
-        {loading ? 'Generating...' : 'Get AI Suggestion'}
-      </button>
+        <Wand2 className="w-4 h-4 mr-2" />
+        {loading ? 'Generating suggestion...' : 'Get AI Suggestion'}
+      </Button>
     </div>
   );
 };
