@@ -14,7 +14,8 @@ export default function Header() {
 
   return (
     <nav
-      className={`flex justify-between md:justify-around items-center w-screen h-20 fixed top-0 ${
+      className={`flex justify-between md:justify-around items-center w-screen h-20 fixed top-0 z-[9999]
+        ${
         darkMode ? 'bg-[#1a202c]' : 'bg-[#ffffff]'
       }`}
     >
