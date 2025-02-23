@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 // Doing changes for deployment trial.
 
@@ -14,6 +15,17 @@ root.render(
     <BrowserRouter>
       <ThemeProvider>
         <App />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
